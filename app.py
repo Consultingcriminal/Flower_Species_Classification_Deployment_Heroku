@@ -27,7 +27,8 @@ def predict_api():
     data = request.get_json(force=True)
     data_unseen = np.array([data]).reshape(1,-1)
     prediction = clf.predict(data_unseen)
-    return prediction
+    prediction=np.array2string(prediction)
+    return jsonify(prediction)
 
 if __name__ == '__main__':
     app.run(debug=True)
